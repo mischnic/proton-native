@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { render, Window, App, Box, Menu, Area } from '../src/';
+import { render, Window, App, Box, Area, Checkbox, StyledText } from '../src/';
 
 const ipsum = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
 
@@ -15,14 +15,27 @@ At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergr
 `;
 
 class Example extends Component {
+  state = { styledText: true };
+
   render() {
     return (
       <App>
         <Window title="Test" size={{ w: 600, h: 500 }} margined={true}>
           <Box padded>
-            <Area scrolling={{ w: 550, h: 1300 }}>
-              <Area.Text>{ipsum + '\n' + ipsum}</Area.Text>
-            </Area>
+            <Checkbox
+              stretchy={false}
+              checked={this.state.styledText}
+              onToggle={v => this.setState({ styledText: v })}
+            >
+              StyledText
+            </Checkbox>
+            {this.state.styledText ? (
+              <StyledText scrolling>{ipsum + '\n' + ipsum}</StyledText>
+            ) : (
+              <Area scrolling={{ w: 550, h: 1300 }}>
+                <Area.Text>{ipsum + '\n' + ipsum}</Area.Text>
+              </Area>
+            )}
           </Box>
         </Window>
       </App>

@@ -12,9 +12,10 @@ class StyledText extends Component {
       null,
       hasParent => {
         if (!hasParent) {
+          // get width & height?
           return React.createElement(
             Area,
-            null,
+            { scrolling: { w: 0, h: 0 } },
             React.createElement(Area.Text, otherProps, children)
           );
         } else {

@@ -995,6 +995,7 @@ Area.Text.propTypes = {
   children: PropTypes.oneOfType([areaProp, PropTypes.arrayOf(areaProp)]),
   x: PropTypes.number,
   y: PropTypes.number,
+  scrolling: PropTypes.bool,
 };
 
 Area.Text.defaultProps = {
